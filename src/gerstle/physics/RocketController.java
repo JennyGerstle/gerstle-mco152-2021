@@ -18,7 +18,13 @@ public class RocketController
         @FXML
         TextField secondsField;
         @FXML
-        private Text actiontarget;
+        TextField flightTimeField;
+        @FXML
+        TextField xPointField;
+        @FXML
+        TextField yPointField;
+
+
 
     public void calculateRocket(ActionEvent actionEvent)
     {
@@ -27,9 +33,8 @@ public class RocketController
         double seconds = Double.parseDouble(secondsField.getText());
 
         Rocket rocket = new Rocket(velocity, angle);
-        System.out.println();
-        System.out.println(rocket.getX(seconds));
-        System.out.println(rocket.getY(seconds));
-        actiontarget.setText(Double.toString(rocket.getFlightTime()));
+        flightTimeField.setText(Double.toString(rocket.getFlightTime()));
+        xPointField.setText(Double.toString(rocket.getX(seconds)));
+        yPointField.setText(Double.toString(rocket.getY(seconds)));
     }
 }

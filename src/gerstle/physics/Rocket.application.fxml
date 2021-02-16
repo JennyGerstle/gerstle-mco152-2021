@@ -30,9 +30,17 @@
     <Button text="Calculate" onAction="#calculateRocket"
             GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 
-    <Label fx:id="TotalFlightTime"
+    <Label text="FlightTime:"
         GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-    <TextField fx:id="totalFlightTimeAns" text=""
+    <TextField fx:id="flightTimeField"
                GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    <Label text="XPoint:"
+           GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <TextField fx:id="xPointField"
+               GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+    <Label text="YPoint:"
+           GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+    <TextField fx:id="yPointField"
+               GridPane.columnIndex="1" GridPane.rowIndex="6"/>
 
 </GridPane>
