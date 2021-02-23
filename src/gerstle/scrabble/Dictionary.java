@@ -2,6 +2,10 @@ package gerstle.scrabble;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -10,7 +14,6 @@ import java.util.Scanner;
 public class Dictionary
 {
     private final String word;
-    private final File dictionary = new File("src/gerstle/scrabble/dictionary.txt");
     public Dictionary(String word)
     {
         this.word = word;
@@ -18,32 +21,27 @@ public class Dictionary
 
     /**
      *
+     * @return list of words
+     * @throws FileNotFoundException for when the file is not found
+     */
+    public String[] words() throws FileNotFoundException
+    {
+        ArrayList<String> words = new ArrayList<>();
+        Scanner wordReader = new Scanner(new FileReader("src/gerstle/scrabble/dictionary.txt"));
+        while(wordReader.hasNextLine())
+        {
+            String wordRef = wordReader.next();
+            words.add(wordRef.toUpperCase());
+            wordReader.nextLine();
+        }
+        Collections.sort(words);
+        return words.toArray(new String[0]);
+    }
+    /**
      * @ Boolean whether the word is in the dictionary file
      */
-    public boolean findWord()
+    public boolean findWord(String[] diArray)
     {
-        boolean found = false;
-        try
-        {
-            Scanner wordReader = new Scanner(new FileReader(dictionary));
-            while(wordReader.hasNextLine())
-            {
-                String wordRef = wordReader.next();
-                if(word.equalsIgnoreCase(wordRef))
-                {
-                    found = true;
-                    break;
-                }
-                else
-                {
-                    wordReader.nextLine();
-                }
-            }
-        }
-        catch(Exception ex)
-        {
-            System.out.println(ex);
-        }
-        return found;
+            return Arrays.binarySearch(diArray, word.toUpperCase()) >=0;
     }
 }

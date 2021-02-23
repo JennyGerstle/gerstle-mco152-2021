@@ -2,6 +2,7 @@ package gerstle.physics;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -18,11 +19,11 @@ public class RocketController
         @FXML
         TextField secondsField;
         @FXML
-        TextField flightTimeField;
+        Label flightTimeLabel;
         @FXML
-        TextField xPointField;
+        Label LocationLabel;
         @FXML
-        TextField yPointField;
+        RocketCanvas rocketCanvas;
 
 
 
@@ -33,8 +34,12 @@ public class RocketController
         double seconds = Double.parseDouble(secondsField.getText());
 
         Rocket rocket = new Rocket(velocity, angle);
-        flightTimeField.setText(Double.toString(rocket.getFlightTime()));
-        xPointField.setText(Double.toString(rocket.getX(seconds)));
-        yPointField.setText(Double.toString(rocket.getY(seconds)));
+        flightTimeLabel.setText(Double.toString(rocket.getFlightTime()));
+        String location = String.format("(%.2f, %.2f)",
+                rocket.getX(seconds),
+                rocket.getY(seconds));
+        LocationLabel.setText(location);
+
+        rocketCanvas.draw(rocket);
     }
 }

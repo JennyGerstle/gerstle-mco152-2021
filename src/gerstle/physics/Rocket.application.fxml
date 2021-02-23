@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
+<?import gerstle.physics.RocketCanvas?>
 <GridPane fx:controller="gerstle.physics.RocketController"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
     <padding>
@@ -14,17 +15,17 @@
     </padding>
     <Label text="Velocity:"
            GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-    <TextField fx:id="velocityField"
+    <TextField fx:id="velocityField" text ="71"
             GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
     <Label text="Angle:"
            GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <TextField fx:id="angleField"
+    <TextField fx:id="angleField" text ="35"
             GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
     <Label text="Seconds:"
            GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-    <TextField fx:id="secondsField"
+    <TextField fx:id="secondsField" text ="3"
             GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
     <Button text="Calculate" onAction="#calculateRocket"
@@ -32,15 +33,17 @@
 
     <Label text="FlightTime:"
         GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-    <TextField fx:id="flightTimeField"
+    <Label fx:id="flightTimeLabel"
                GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-    <Label text="XPoint:"
+    <Label text="Location"
            GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-    <TextField fx:id="xPointField"
-               GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-    <Label text="YPoint:"
-           GridPane.columnIndex="0" GridPane.rowIndex="6"/>
-    <TextField fx:id="yPointField"
-               GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+    <Label fx:id="LocationLabel"
+           GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.columnSpan="2"/>
+    <RocketCanvas fx:id = "rocketCanvas"
+            width = "200"
+            height="200"
+            GridPane.columnIndex="0"
+            GridPane.rowIndex="6"
+            GridPane.columnSpan="2"/>
 
 </GridPane>
