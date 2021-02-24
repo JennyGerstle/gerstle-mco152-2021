@@ -40,10 +40,10 @@
     <Label fx:id="LocationLabel"
            GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.columnSpan="2"/>
     <RocketCanvas fx:id = "rocketCanvas"
-            width = "200"
-            height="200"
-            GridPane.columnIndex="0"
-            GridPane.rowIndex="6"
-            GridPane.columnSpan="2"/>
+                  width = "200"
+                  height="200"
+                  GridPane.columnIndex="0"
+                  GridPane.rowIndex="6"
+                  GridPane.columnSpan="2"/>
 
 </GridPane>

@@ -1,0 +1,29 @@
+plugins {
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+// This is the class with the main to run when the application starts.
+mainClassName = 'gerstle.physics.RocketApplication'
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    modules("javafx.controls", "javafx.fxml")
+}
+
+javafx {
+    version = '12'
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    testImplementation "junit:junit:4.12"
+}

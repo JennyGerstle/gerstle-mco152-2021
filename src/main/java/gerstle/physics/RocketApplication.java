@@ -10,7 +10,7 @@ public class RocketApplication extends Application
 {
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Rocket.application.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Rocket.application.fxml"));
 
         Scene scene = new Scene(root, 320, 750);
 

@@ -27,7 +27,7 @@ public class Dictionary
     public String[] words() throws FileNotFoundException
     {
         ArrayList<String> words = new ArrayList<>();
-        Scanner wordReader = new Scanner(new FileReader("src/gerstle/scrabble/dictionary.txt"));
+        Scanner wordReader = new Scanner(new FileReader("src/main/java/gerstle/scrabble/dictionary.txt"));
         while(wordReader.hasNextLine())
         {
             String wordRef = wordReader.next();
