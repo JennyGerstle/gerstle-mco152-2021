@@ -12,10 +12,12 @@ public class DictionaryTest
     @Test
     public void findExistsWord() throws FileNotFoundException
     {
-        //checks an existing word
-        Dictionary dict = new Dictionary("word");
-        String[] dictArray = dict.words();
-        boolean tru = dict.findWord(dictArray);
+        Dictionary dict = new Dictionary();
+        
+        String word = "word";
+        String[] dictArray = dict.Dictionary(word);
+
+        boolean tru = dict.findWord(dictArray, word);
 
         Assert.assertTrue(tru);
     }
@@ -25,11 +27,12 @@ public class DictionaryTest
     @Test
     public void findNoWord() throws FileNotFoundException
     {
-        //checks non-existing word
-        Dictionary nonDict = new Dictionary("wr2");
-        String[] dictArray = nonDict.words();
+        Dictionary nonDict = new Dictionary();
 
-        boolean fls = nonDict.findWord(dictArray);
+        String word ="wr2";
+        String[] dictArray = nonDict.Dictionary(word);
+
+        boolean fls = nonDict.findWord(dictArray, word);
 
         Assert.assertFalse(fls);
     }
@@ -39,11 +42,12 @@ public class DictionaryTest
     @Test
     public void findConfusedWord() throws FileNotFoundException
     {
-        //checks non-existing word
-        Dictionary conDict = new Dictionary("WoRd");
-        String[] dictArray = conDict.words();
+        Dictionary conDict = new Dictionary();
 
-        boolean found = conDict.findWord(dictArray);
+        String word = "WoRd";
+        String[] dictArray = conDict.Dictionary("WoRd");
+
+        boolean found = conDict.findWord(dictArray, word);
 
         Assert.assertTrue(found);
     }

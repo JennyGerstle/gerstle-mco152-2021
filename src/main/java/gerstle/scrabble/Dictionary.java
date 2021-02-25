@@ -13,21 +13,15 @@ import java.util.Scanner;
  */
 public class Dictionary
 {
-    private final String word;
-    public Dictionary(String word)
-    {
-        this.word = word;
-    }
-
     /**
      *
      * @return list of words
      * @throws FileNotFoundException for when the file is not found
      */
-    public String[] words() throws FileNotFoundException
+    public String[] Dictionary(String word) throws FileNotFoundException
     {
         ArrayList<String> words = new ArrayList<>();
-        Scanner wordReader = new Scanner(new FileReader("src/main/java/gerstle/scrabble/dictionary.txt"));
+        Scanner wordReader = new Scanner(new FileReader("src/main/resources/dictionary.txt"));
         while(wordReader.hasNextLine())
         {
             String wordRef = wordReader.next();
@@ -40,7 +34,7 @@ public class Dictionary
     /**
      * @ Boolean whether the word is in the dictionary file
      */
-    public boolean findWord(String[] diArray)
+    public boolean findWord(String[] diArray, String word)
     {
             return Arrays.binarySearch(diArray, word.toUpperCase()) >=0;
     }
