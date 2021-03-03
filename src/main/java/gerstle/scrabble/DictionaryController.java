@@ -19,9 +19,8 @@ public class DictionaryController
         String word = wordToSearchField.getText();
 
         String found;
-        Dictionary search = new Dictionary(word);
-        String[] dictArray = search.words();
-        if(search.findWord(dictArray))
+        Dictionary search = new Dictionary();
+        if(search.findWord(word))
         {
             found = "exists";
         }

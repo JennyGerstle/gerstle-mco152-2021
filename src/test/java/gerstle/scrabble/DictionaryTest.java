@@ -13,11 +13,10 @@ public class DictionaryTest
     public void findExistsWord() throws FileNotFoundException
     {
         Dictionary dict = new Dictionary();
-        
-        String word = "word";
-        String[] dictArray = dict.Dictionary(word);
 
-        boolean tru = dict.findWord(dictArray, word);
+        String word = "word";
+
+        boolean tru = dict.findWord(word);
 
         Assert.assertTrue(tru);
     }
@@ -29,10 +28,9 @@ public class DictionaryTest
     {
         Dictionary nonDict = new Dictionary();
 
-        String word ="wr2";
-        String[] dictArray = nonDict.Dictionary(word);
+        String word ="wr2";;
 
-        boolean fls = nonDict.findWord(dictArray, word);
+        boolean fls = nonDict.findWord(word);
 
         Assert.assertFalse(fls);
     }
@@ -45,10 +43,34 @@ public class DictionaryTest
         Dictionary conDict = new Dictionary();
 
         String word = "WoRd";
-        String[] dictArray = conDict.Dictionary("WoRd");
 
-        boolean found = conDict.findWord(dictArray, word);
+        boolean found = conDict.findWord(word);
 
         Assert.assertTrue(found);
+    }
+
+
+    @Test
+    public void getDefinition() throws FileNotFoundException
+    {
+        Dictionary getDict = new Dictionary();
+
+        String word = "WoRd";
+
+        String def = getDict.getDefinition(word);
+
+        Assert.assertEquals(def, "to express in words (speech sounds that communicate meaning) [v -ED, -ING, -S]");
+    }
+
+    @Test
+    public void getNoDefinition() throws FileNotFoundException
+    {
+        Dictionary noDict = new Dictionary();
+
+        String word = "WRd";
+
+         String def = noDict.getDefinition(word);
+
+        Assert.assertEquals(def, "");
     }
 }
