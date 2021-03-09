@@ -6,7 +6,7 @@ apply plugin: 'java'
 apply plugin: 'application'
 
 // This is the class with the main to run when the application starts.
-mainClassName = 'gerstle.physics.RocketApplication'
+mainClassName = 'gerstle.scrabble.DictionaryApplication'
 
 repositories {
     mavenCentral()

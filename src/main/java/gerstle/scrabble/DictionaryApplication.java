@@ -11,9 +11,9 @@ public class DictionaryApplication extends Application
     @Override
     public void start(Stage stage) throws Exception
     {
-        Parent root = FXMLLoader.load(getClass().getResource("../../../resources/Dictionary_application.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Scrabble_application.fxml"));
 
-        Scene scene = new Scene(root, 300, 275);
+        Scene scene = new Scene(root, 600, 400);
 
         stage.setTitle("Dictionary");
         stage.setScene(scene);
