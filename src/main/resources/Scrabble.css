@@ -1,0 +1,24 @@
+Label.top {
+        -fx-min-width:50;
+        -fx-min-height:50;
+        -fx-border-width:.5;
+        -fx-border-color: grey;
+        -fx-background-color:lightpink;
+        }
+Label.bottom {
+        -fx-min-width:50;
+        -fx-min-height:50;
+        -fx-border-width:.5;
+        -fx-border-color:grey;
+        }
+Label.scoreNum{
+        -fx-min-width:30;
+        -fx-min-height:30;
+        -fx-border-width:0;
+}
+Label.points {
+    -fx-min-width:50;
+    -fx-min-height:50;
+    -fx-border-width:1;
+    -fx-border-color:green;
+}

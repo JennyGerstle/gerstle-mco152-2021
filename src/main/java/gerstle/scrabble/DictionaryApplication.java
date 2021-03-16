@@ -18,6 +18,7 @@ public class DictionaryApplication extends Application
         stage.setTitle("Dictionary");
         stage.setScene(scene);
         stage.show();
+
     }
 
     public static void main(String[] args)

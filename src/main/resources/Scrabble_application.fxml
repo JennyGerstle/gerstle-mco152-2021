@@ -1,32 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
+<?import java.util.*?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gerstle.scrabble.DictionaryController">
-   <children>
-      <Rectangle fx:id="usrWrd1" arcHeight="5.0" arcWidth="5.0" fill="#fff4bf" height="50.0" layoutX="79.0" layoutY="46.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-      <Rectangle fx:id="usrWrd2" arcHeight="5.0" arcWidth="5.0" fill="#fff4bf" height="50.0" layoutX="141.0" layoutY="46.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-      <Rectangle fx:id="usrWrd3" arcHeight="5.0" arcWidth="5.0" fill="#fff4bf" height="50.0" layoutX="204.0" layoutY="46.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-      <Rectangle fx:id="usrWrd4" arcHeight="5.0" arcWidth="5.0" fill="#fff4bf" height="50.0" layoutX="267.0" layoutY="46.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-      <Rectangle fx:id="usrWrd5" arcHeight="5.0" arcWidth="5.0" fill="#fff4bf" height="50.0" layoutX="327.0" layoutY="46.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-      <Rectangle fx:id="usrWrd6" arcHeight="5.0" arcWidth="5.0" fill="#fff4bf" height="50.0" layoutX="390.0" layoutY="46.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-      <Rectangle fx:id="usrWrd7" arcHeight="5.0" arcWidth="5.0" fill="#fff4bf" height="50.0" layoutX="449.0" layoutY="46.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
+<GridPane prefHeight="400.0" prefWidth="600.0" stylesheets="Scrabble.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gerstle.scrabble.ScrabbleController">
+   <Label fx:id="answerLabel0" styleClass="top" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+   <Label fx:id="answerLabel1" styleClass="top" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+   <Label fx:id="answerLabel2" styleClass="top" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="6" GridPane.rowIndex="0"/>
+   <Label fx:id="answerLabel3" styleClass="top" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="8" GridPane.rowIndex="0"/>
+   <Label fx:id="answerLabel4" styleClass="top" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="10" GridPane.rowIndex="0"/>
+   <Label fx:id="answerLabel5" styleClass="top" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="12" GridPane.rowIndex="0"/>
+   <Label fx:id="answerLabel6" styleClass="top" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="14" GridPane.rowIndex="0"/>
 
-      <Rectangle fx:id="usrLet1" arcHeight="5.0" arcWidth="5.0" fill="#fff4bf" height="50.0" layoutX="29.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-      <Rectangle fx:id="usrLet2" arcHeight="5.0" arcWidth="5.0" fill="#fff4bf" height="50.0" layoutX="110.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-      <Rectangle fx:id="usrLet3" arcHeight="5.0" arcWidth="5.0" fill="#fff4bf" height="50.0" layoutX="191.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-      <Rectangle fx:id="usrLet4" arcHeight="5.0" arcWidth="5.0" fill="#fff4bf" height="50.0" layoutX="274.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-      <Rectangle fx:id="usrLet5" arcHeight="5.0" arcWidth="5.0" fill="#fff4bf" height="50.0" layoutX="352.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-      <Rectangle fx:id="usrLet6" arcHeight="5.0" arcWidth="5.0" fill="#fff4bf" height="50.0" layoutX="433.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-      <Rectangle fx:id="usrLet7" arcHeight="5.0" arcWidth="5.0" fill="#fff4bf" height="50.0" layoutX="514.0" layoutY="312.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
+   <Button fx:id="clearBttn" onMouseClicked="#onClear" GridPane.columnIndex="2" GridPane.rowIndex="3" text="Clear" />
+   <Button fx:id="submitBttn" onMouseClicked="#onSubmit" GridPane.columnIndex="4" GridPane.rowIndex="3" text="Submit" />
+   <Label fx:id="scoreNum"  styleClass="points" GridPane.columnIndex="6" GridPane.rowIndex="3" text="Score: 00" />
+
+   <Label fx:id="letterLabel0" styleClass="bottom" onMouseClicked="#onLetterClicked" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+   <Label fx:id="letterLabel1" styleClass="bottom" onMouseClicked="#onLetterClicked" GridPane.columnIndex="4" GridPane.rowIndex="5"/>
+   <Label fx:id="letterLabel2" styleClass="bottom" onMouseClicked="#onLetterClicked" GridPane.columnIndex="6" GridPane.rowIndex="5"/>
+   <Label fx:id="letterLabel3" styleClass="bottom" onMouseClicked="#onLetterClicked" GridPane.columnIndex="8" GridPane.rowIndex="5"/>
+   <Label fx:id="letterLabel4" styleClass="bottom" onMouseClicked="#onLetterClicked" GridPane.columnIndex="10" GridPane.rowIndex="5"/>
+   <Label fx:id="letterLabel5" styleClass="bottom" onMouseClicked="#onLetterClicked" GridPane.columnIndex="12" GridPane.rowIndex="5"/>
+   <Label fx:id="letterLabel6" styleClass="bottom" onMouseClicked="#onLetterClicked" GridPane.columnIndex="14" GridPane.rowIndex="5"/>
 
 
-      <Button fx:id="submitBttn" layoutX="178.0" layoutY="181.0" mnemonicParsing="false" text="Submit" />
-      <Button fx:id="ClearBttn" layoutX="266.0" layoutY="181.0" mnemonicParsing="false" text="Clear" />
-      <Label layoutX="345.0" layoutY="185.0" text="Score:" />
-      <Label fx:id="scoreNum" layoutX="384.0" layoutY="185.0" text="00" />
+   <fx:define>
+      <ArrayList fx:id="answerLabels" >
+         <fx:reference source="answerLabel0"/>
+         <fx:reference source="answerLabel1"/>
+         <fx:reference source="answerLabel2"/>
+         <fx:reference source="answerLabel3"/>
+         <fx:reference source="answerLabel4"/>
+         <fx:reference source="answerLabel5"/>
+         <fx:reference source="answerLabel6"/>
+      </ArrayList>
+      <ArrayList fx:id="letterLabels" >
+         <fx:reference source="letterLabel0"/>
+         <fx:reference source="letterLabel1"/>
+         <fx:reference source="letterLabel2"/>
+         <fx:reference source="letterLabel3"/>
+         <fx:reference source="letterLabel4"/>
+         <fx:reference source="letterLabel5"/>
+         <fx:reference source="letterLabel6"/>
+      </ArrayList>
+   </fx:define>
 
-   </children>
-</AnchorPane>
+</GridPane>
