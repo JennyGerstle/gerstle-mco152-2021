@@ -11,7 +11,14 @@ public class DictionaryApplication extends Application
     @Override
     public void start(Stage stage) throws Exception
     {
-        Parent root = FXMLLoader.load(getClass().getResource("/Scrabble_application.fxml"));
+        Dictionary dictionary = new Dictionary();
+        LetterBag letterBag = new LetterBag();
+        ScrabbleController controller = new ScrabbleController(letterBag, dictionary);
+
+        FXMLLoader  loader = new FXMLLoader(getClass().getResource("/Scrabble_application.fxml"));
+        loader.setController(controller);
+
+        Parent root = loader.load();
 
         Scene scene = new Scene(root, 600, 400);
 

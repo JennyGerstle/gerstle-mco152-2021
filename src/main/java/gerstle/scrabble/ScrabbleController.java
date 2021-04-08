@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 public class ScrabbleController
@@ -16,77 +15,163 @@ public class ScrabbleController
     @FXML
     List<Label> letterLabels;
     @FXML
-    Label scoreNum;
+    Label scoreLabel;
 
-    private LetterBag letterBag = new LetterBag();
-    private int count = 0;
-    private int points = 0;
+    private int score = 0;
 
-    private Dictionary dictionary;
+    private final LetterBag letterBag;
+    private final Dictionary dictionary;
 
-    public ScrabbleController()
+    //Dependency injunction (ie depends on other)
+    // so pass those objects in the constructor.
+    public ScrabbleController(LetterBag letterBag, Dictionary dictionary)
     {
-        try{
-            dictionary = new Dictionary();
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        this.letterBag = letterBag;
+        this.dictionary = dictionary;
     }
 
     @FXML
-    public void initialize(){
-        for(Label label : letterLabels) {
+    public void initialize()
+    {
+        for (Label label : letterLabels)
+        {
             label.setText(letterBag.nextLetter());
         }
     }
+
+    /**
+     * Return the letter in this answerLabel to an empty letterLabel if this Label is not empty.
+     *
+     * @param event
+     */
     public void onAnswerClicked(MouseEvent event)
     {
         Label label = (Label) event.getSource();
-
-    }
-
-    public void onClear(ActionEvent event)
-    {
-        count = 0;
-        for(Label ansLabel: answerLabels)
+        String letter = label.getText();
+        if (!letter.isEmpty())
         {
-            if(!ansLabel.getText().equals(" "))
+            label.setText("");
+            for (Label letterLabel : letterLabels)
             {
-                for(Label letLabel: letterLabels)
+                String s = letterLabel.getText();
+                if (s.isEmpty())
                 {
-                    if (!letLabel.getText().equals(" "))
-                    {
-                        letLabel.setText(ansLabel.getText());
-                    }
+                    letterLabel.setText(letter);
+                    break;
                 }
-                ansLabel.setText(" ");
-            }
-            else
-                {
-                break;
             }
         }
 
+    }
+
+    /**
+     * Returns the letters in answerLabels to letterLabels
+     *
+     * @param event
+     */
+    public void onClear(ActionEvent event)
+    {
+        for (Label answerLabel : answerLabels)
+        {
+            String letter = answerLabel.getText();
+            if (letter != null && !letter.isEmpty())
+            {
+                answerLabel.setText("");
+                for (Label letterLabel : letterLabels)
+                {
+                    if (letterLabel.getText().isEmpty())
+                    {
+                        letterLabel.setText(letter);
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     public void onSubmit(ActionEvent event)
     {
-        /**if(dictionary.findWord(answerLabels.toString()))
+        StringBuilder build = new StringBuilder();
+        for (Label label : answerLabels)
         {
-            points = answerLabels.toString().length();
-            scoreNum.setText(String.valueOf(points));
-        }*/
+            String letter = label.getText();
+            if (letter.isEmpty())
+            {
+                break;
+            }
+            build.append(letter);
+        }
+        String word = build.toString();
+        if (dictionary.findWord(word))
+        {
+            addPoints(word);
+            scoreLabel.setText(String.valueOf(score));
+            clearAnswerLabels();
+            addNewLetters();
+        }
 
+    }
+
+    public void addPoints(String word)
+    {
+        switch (word.length())
+        {
+            case 2:
+                score += 2;
+                break;
+            case 3:
+                score += 3;
+                break;
+            case 4:
+                score += 5;
+                break;
+            case 5:
+                score += 7;
+                break;
+            case 6:
+                score += 11;
+                break;
+            case 7:
+                score += 13;
+                break;
+        }
+    }
+
+    private void addNewLetters()
+    {
+        for (Label label : letterLabels)
+        {
+            if (label.getText().isEmpty())
+            {
+                label.setText(letterBag.nextLetter());
+            }
+        }
+    }
+
+    private void clearAnswerLabels()
+    {
+        for (Label label : answerLabels)
+        {
+            label.setText("");
+        }
     }
 
     public void onLetterClicked(MouseEvent event)
     {
         Label label = (Label) event.getSource();
-        Label ansLabel =(Label) answerLabels.get(count);
-        ansLabel.setText(label.getText());
-        label.setText(" ");
-        count++;
-
+        String letter = label.getText();
+        if (!letter.isEmpty())
+        {
+            label.setText("");
+            for (Label answerLabel : answerLabels)
+            {
+                String s = answerLabel.getText();
+                if (s.isEmpty())
+                {
+                    answerLabel.setText(letter);
+                    break;
+                }
+            }
+        }
     }
 }

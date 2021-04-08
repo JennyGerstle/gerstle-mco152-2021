@@ -15,9 +15,9 @@
    <Label fx:id="answerLabel5" styleClass="top" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="12" GridPane.rowIndex="0"/>
    <Label fx:id="answerLabel6" styleClass="top" onMouseClicked="#onAnswerClicked" GridPane.columnIndex="14" GridPane.rowIndex="0"/>
 
-   <Button fx:id="clearBttn" onMouseClicked="#onClear" GridPane.columnIndex="2" GridPane.rowIndex="3" text="Clear" />
-   <Button fx:id="submitBttn" onMouseClicked="#onSubmit" GridPane.columnIndex="4" GridPane.rowIndex="3" text="Submit" />
-   <Label fx:id="scoreNum"  styleClass="points" GridPane.columnIndex="6" GridPane.rowIndex="3" text="Score: 00" />
+   <Button fx:id="clearBttn" onAction="#onClear" GridPane.columnIndex="2" GridPane.rowIndex="3" text="Clear" />
+   <Button fx:id="submitBttn" onAction="#onSubmit" GridPane.columnIndex="4" GridPane.rowIndex="3" text="Submit" />
+   <Label fx:id="scoreLabel" styleClass="points" GridPane.columnIndex="6" GridPane.rowIndex="3" text="Score: 00" />
 
    <Label fx:id="letterLabel0" styleClass="bottom" onMouseClicked="#onLetterClicked" GridPane.columnIndex="2" GridPane.rowIndex="5"/>
    <Label fx:id="letterLabel1" styleClass="bottom" onMouseClicked="#onLetterClicked" GridPane.columnIndex="4" GridPane.rowIndex="5"/>
