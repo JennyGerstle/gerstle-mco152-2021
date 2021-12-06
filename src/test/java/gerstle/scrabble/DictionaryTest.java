@@ -2,6 +2,8 @@ package gerstle.scrabble;
 
 import org.junit.Assert;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.junit.Test;
 
 public class DictionaryTest
@@ -10,7 +12,7 @@ public class DictionaryTest
      * Tests findWords when there is a real word passed
      */
     @Test
-    public void findExistsWord() throws FileNotFoundException
+    public void findExistsWord() throws IOException
     {
         Dictionary dict = new Dictionary();
 
@@ -24,7 +26,7 @@ public class DictionaryTest
      * Tests findWords when there is not a real word passed
      */
     @Test
-    public void findNoWord() throws FileNotFoundException
+    public void findNoWord() throws IOException
     {
         Dictionary nonDict = new Dictionary();
 
@@ -38,7 +40,7 @@ public class DictionaryTest
      * Tests findWords when there is a mixed case word passed
      */
     @Test
-    public void findConfusedWord() throws FileNotFoundException
+    public void findConfusedWord() throws IOException
     {
         Dictionary conDict = new Dictionary();
 
@@ -51,7 +53,7 @@ public class DictionaryTest
 
 
     @Test
-    public void getDefinition() throws FileNotFoundException
+    public void getDefinition() throws IOException
     {
         Dictionary getDict = new Dictionary();
 
@@ -63,7 +65,7 @@ public class DictionaryTest
     }
 
     @Test
-    public void getNoDefinition() throws FileNotFoundException
+    public void getNoDefinition() throws IOException
     {
         Dictionary noDict = new Dictionary();
 

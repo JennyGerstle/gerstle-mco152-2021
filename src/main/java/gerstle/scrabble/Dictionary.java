@@ -2,10 +2,7 @@ package gerstle.scrabble;
 
 import jdk.internal.org.jline.utils.InputStreamReader;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -16,18 +13,22 @@ public class Dictionary
     /**
      *
      * @return list of words
-     * @throws FileNotFoundException for when the file is not found
+     * @throws IOException for when the file is not found
      */
-    private Map<String, String> wordsToDefinitions = new HashMap<>();
+    private final Map<String, String> wordsToDefinitions = new HashMap<>();
 
-    public Dictionary() throws FileNotFoundException
+    public Dictionary() throws IOException
     {
-        Scanner wordReader = new Scanner(new FileReader("src/main/resources/dictionary.txt"));
-        while(wordReader.hasNextLine())
+        InputStream in = getClass().getClassLoader().getResourceAsStream("resources/dictionary.txt");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        String dictionaryLine;
+        while ((dictionaryLine = reader.readLine()) != null)
         {
-            wordsToDefinitions.put(wordReader.next(), //key
-                    wordReader.nextLine().trim() //value
-            );
+            int index = dictionaryLine.indexOf(" ");
+            String[] pairs = dictionaryLine.split(" ", 2);
+            wordsToDefinitions.put(
+                    index == -1 ? dictionaryLine : dictionaryLine.substring(0, index), //key
+                    index > -1 ? dictionaryLine.substring(index + 1) : null);
         }
     }
     /**
