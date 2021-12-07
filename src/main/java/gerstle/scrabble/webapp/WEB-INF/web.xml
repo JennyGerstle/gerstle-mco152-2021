@@ -12,7 +12,7 @@
     <servlet>
         <display-name>PathServlet</display-name>
         <servlet-name>PathServlet</servlet-name>
-        <servlet-class>webapp.PathServlet</servlet-class>
+        <servlet-class>gerstle.scrabble.PathServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

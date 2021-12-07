@@ -1,9 +1,7 @@
 package gerstle.scrabble;
 
 import org.junit.Assert;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-
 import org.junit.Test;
 
 public class DictionaryTest
