@@ -1,7 +1,5 @@
 package gerstle.scrabble;
 
-import jdk.internal.org.jline.utils.InputStreamReader;
-
 import java.io.*;
 import java.util.*;
 
@@ -19,16 +17,15 @@ public class Dictionary
 
     public Dictionary() throws IOException
     {
-        InputStream in = getClass().getClassLoader().getResourceAsStream("src/main/resources/dictionary.txt");
+        InputStream in = getClass().getClassLoader().getResourceAsStream("dictionary.txt");
         BufferedReader reader = null;
         if (in != null)
         {
             reader = new BufferedReader(new InputStreamReader(in));
         }
         String dictionaryLine;
-        while (reader.readLine() != null)
+        while ((dictionaryLine = reader.readLine()) != null)
         {
-            dictionaryLine = reader.readLine();
             int index = dictionaryLine.indexOf(" ");
             String[] pairs = dictionaryLine.split(" ", 2);
             wordsToDef.put(
