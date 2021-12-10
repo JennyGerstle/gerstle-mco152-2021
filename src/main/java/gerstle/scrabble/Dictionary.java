@@ -1,8 +1,6 @@
 package gerstle.scrabble;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -13,18 +11,26 @@ public class Dictionary
     /**
      *
      * @return list of words
-     * @throws FileNotFoundException for when the file is not found
+     * @throws IOException for when the file is not found
      */
-    private Map<String, String> wordsToDefinitions = new HashMap<>();
+    private final Map<String, String> wordsToDef = new HashMap<>();
 
-    public Dictionary() throws FileNotFoundException
+    public Dictionary() throws IOException
     {
-        Scanner wordReader = new Scanner(new FileReader("src/main/resources/dictionary.txt"));
-        while(wordReader.hasNextLine())
+        InputStream in = getClass().getClassLoader().getResourceAsStream("dictionary.txt");
+        BufferedReader reader = null;
+        if (in != null)
         {
-            wordsToDefinitions.put(wordReader.next(), //key
-                    wordReader.nextLine().trim() //value
-            );
+            reader = new BufferedReader(new InputStreamReader(in));
+        }
+        String dictionaryLine;
+        while ((dictionaryLine = reader.readLine()) != null)
+        {
+            int index = dictionaryLine.indexOf(" ");
+            String[] pairs = dictionaryLine.split(" ", 2);
+            wordsToDef.put(
+                    index == -1 ? dictionaryLine : dictionaryLine.substring(0, index), //key
+                    index > -1 ? dictionaryLine.substring(index + 1) : null);
         }
     }
     /**
@@ -32,17 +38,17 @@ public class Dictionary
      */
     public boolean findWord(String word)
     {
-            return wordsToDefinitions.containsKey((word.toUpperCase()));
+            return wordsToDef.containsKey((word.toUpperCase()));
     }
 
     public String getDefinition(String word)
     {
-        String definition = wordsToDefinitions.get(word.toUpperCase());
+        String definition = wordsToDef.get(word.toUpperCase());
         return definition == null ? "" : definition;
     }
 
     public int size()
     {
-        return wordsToDefinitions.size();
+        return wordsToDef.size();
     }
 }

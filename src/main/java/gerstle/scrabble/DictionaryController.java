@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 
 public class DictionaryController
@@ -14,7 +15,7 @@ public class DictionaryController
     @FXML
     TextField ifFoundWordField;
 
-    public void wordSearch(ActionEvent actionEvent) throws FileNotFoundException
+    public void wordSearch(ActionEvent actionEvent) throws IOException
     {
         String word = wordToSearchField.getText();
 

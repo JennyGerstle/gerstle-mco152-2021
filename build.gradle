@@ -1,5 +1,6 @@
 plugins {
     id 'org.openjfx.javafxplugin' version '0.0.9'
+    id 'war'
 }
 
 apply plugin: 'java'
@@ -25,6 +26,11 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    implementation 'com.google.code.gson:gson:2.8.8'
+    compileOnly 'javax.servlet:servlet-api:2.5'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation 'javax.servlet:servlet-api:2.5'
     testImplementation "junit:junit:4.12"
     testImplementation "org.mockito:mockito-core:3.8.0"
     testImplementation "org.mockito:mockito-inline:3.8.0"
